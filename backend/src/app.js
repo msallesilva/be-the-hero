@@ -1,11 +1,11 @@
 const express = require('express');
 const routes = require('./routes');
+const { errors } = require('celebrate');
 const cors = require('cors');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 /**
  * Rota / Recurso
  */
@@ -39,10 +39,12 @@ app.use(express.json());
    */
 
 app.use(routes);
-
+app.use(errors());
 /**
  * Porta de acesso ao index no Browse
  */
-app.listen(3333);
+// app.listen(3333);
+
+module.exports = app;
 
 
